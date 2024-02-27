@@ -1,0 +1,40 @@
+function startSuperOver() {
+  var team1Score = document.getElementById("score-team1");
+  var team2Score = document.getElementById("score-team2");
+
+  var team1Balls = document.getElementById("team1-superover").children;
+  var team2Balls = document.getElementById("team2-superover").children;
+
+  var team1Total = 0;
+  var team2Total = 0;
+
+  for (var i = 0; i < team1Balls.length; i++) {
+    var randomScore = Math.floor(Math.random() * 7); // Generate a random score between 0 and 6
+    team1Balls[i].innerText = randomScore; // Update ball with random score
+    team1Total += randomScore;
+  }
+  team1Score.innerText = team1Total;
+
+  for (var i = 0; i < team2Balls.length; i++) {
+    var randomScore = Math.floor(Math.random() * 7); // Generate a random score between 0 and 6
+    team2Balls[i].innerText = randomScore; // Update ball with random score
+    team2Total += randomScore;
+  }
+  team2Score.innerText = team2Total;
+
+  // Display winner
+  var winner = team1Total > team2Total ? "IND" : "PAK";
+  displayWinner(winner);
+}
+
+function displayWinner(winner) {
+  var popup = document.getElementById("popup");
+  var winnerText = document.getElementById("winner-text");
+  winnerText.innerText = winner + " wins!";
+  popup.style.display = "block";
+}
+
+function closePopup() {
+  var popup = document.getElementById("popup");
+  popup.style.display = "none";
+}
